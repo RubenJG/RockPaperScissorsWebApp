@@ -1,0 +1,19 @@
+//
+// SCSS stylesheet for the Rock Paper Scissors Web Application
+//
+// Author: Rubén Jiménez Goñi
+
+.page .page--content {
+
+    form {
+        margin: 30px 0;
+        padding: 20px;
+        border-radius: 3px;
+        border: thin solid #ccc;
+        background: rgb(252,252,252);
+    }
+
+    textarea {
+        margin-bottom: 15px;
+    }
+}

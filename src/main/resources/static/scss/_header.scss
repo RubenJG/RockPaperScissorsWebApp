@@ -1,3 +1,8 @@
+//
+// SCSS stylesheet for the Rock Paper Scissors Web Application
+//
+// Author: Rubén Jiménez Goñi
+
 .page .page--header {
 
     header {
@@ -7,15 +12,16 @@
     .title {
         font-family: 'Work Sans', sans-serif;
         color: black;
-        font-size: 4.0rem;
-        line-height: 4.0rem;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
         margin-top: 1.0rem;
         margin-bottom: 1.0rem;
 
         .title-small {
+            font-family: 'Lato', sans-serif;
             color: #555;
-            font-size: 2.0rem;
-            line-height: 3.0rem;
+            font-size: 1.8rem;
+            line-height: 2.5rem;
             margin-top: 1.0rem;
             margin-bottom: 1.0rem;
         }

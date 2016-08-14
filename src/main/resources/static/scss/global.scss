@@ -11,7 +11,7 @@
 // Use with:
 // - font-family: 'Lato', sans-serif;
 // - font-family: 'Work Sans', sans-serif;
-@import url(https://fonts.googleapis.com/css?family=Lato|Work+Sans:900);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700|Work+Sans:900);
 
 // ===================================================================================
 // == Some general variables =========================================================
@@ -58,15 +58,18 @@ html {
 }
 
 body {
-    background-color: rgb(240, 240, 240); 
+    background-color: rgb(250, 250, 250); 
     font-family: 'Lato', sans-serif;
+    color: #555;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
 }
 
 // ===================================================================================
 // == This keeps the footer down =====================================================
 // ===================================================================================
 
-$footer-height: 40px;
+$footer-height: 50px;
 
 * {
     margin: 0;
@@ -142,8 +145,8 @@ html, body {
         color: #555;
         font-size: 1.6rem;
         line-height: 1.6rem;
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
+        margin-top: 1.0rem;
+        margin-bottom: 1.0rem;
 
         small, small a {
             font-size: 1.4rem;
@@ -189,9 +192,24 @@ html, body {
 }
 
 // ===================================================================================
+// == Bootstrap overrides ============================================================
+// ===================================================================================
+
+.btn {
+    font-size: 1.6rem;
+    line-height: 1.6rem; 
+}
+
+
+// ===================================================================================
 // == Partial stylesheets ============================================================
 // ===================================================================================
 
+// Fragments
 @import 'header';
 @import 'menu';
 @import 'footer';
+
+// Pages
+@import 'home';
+

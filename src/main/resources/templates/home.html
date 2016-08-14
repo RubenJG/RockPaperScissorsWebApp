@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<div th:replace="fragments/head :: head"></div>
+	<body>
+		<div class="page">
+			<div class="page--header">
+				<div th:replace="fragments/header :: header"></div>
+				<div th:replace="fragments/menu :: menu"></div>
+			</div>
+			<div class="page--content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-xs-12 col-md-10 col-md-offset-1">
+							<!-- Actual page content START -->
+								
+							<h1>Play!</h1>
+							
+							<div class="alert winner hidden">
+								<p class="winner hidden"></p>
+							</div>
+							
+							<p>Use the following form to upload a file containing the championship's definition:</p>
+							
+							<form id="fileUploadForm">
+								<div class="form-group">
+									<label for="championshipFile">Championship's definition file</label>
+									<input id="championshipFile" type="file" name="file" accept=".txt" required="required"></input>
+								</div>
+								<button type="submit" class="btn btn-default">Submit</button>
+							</form>
+							
+							<p>... or type it here:</p>
+							
+							<form id="directEntryForm">
+								<textarea class="form-control" rows="3" required="required">[ [ "Armando", "P" ], [ "Dave", "S" ] ]</textarea>
+								<button type="submit" class="btn btn-default">Submit</button>
+							</form>
+							
+							<p>If you're not sure how to write a championship's definition, please visit the <a href="help">help page</a>.</p>
+							
+							<!-- Actual page content END -->	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="page--footer">
+				<div th:replace="fragments/footer :: footer"></div>
+			</div>
+		</div>	
+	</body>
+</html>

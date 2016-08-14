@@ -1,3 +1,8 @@
+//
+// SCSS stylesheet for the Rock Paper Scissors Web Application
+//
+// Author: Rubén Jiménez Goñi
+
 .page .page--footer {
     
     footer {
@@ -8,6 +13,7 @@
     p {
         color: white;
         margin: 0;
+        font-size: 1.3rem;
         line-height: $footer-height;
     }
 }
