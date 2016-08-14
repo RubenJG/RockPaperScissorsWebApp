@@ -1,0 +1,197 @@
+//
+// SCSS stylesheet for the Rock Paper Scissors Web Application
+//
+// Author: Rubén Jiménez Goñi
+
+// ===================================================================================
+// == Imported stylesheets ===========================================================
+// ===================================================================================
+
+// Lato and Work sans fonts are imported from Google Fonts
+// Use with:
+// - font-family: 'Lato', sans-serif;
+// - font-family: 'Work Sans', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Lato|Work+Sans:900);
+
+// ===================================================================================
+// == Some general variables =========================================================
+// ===================================================================================
+
+// xs displays
+$xs-min: 0px;
+$xs-max: 767px;
+
+// sm displays
+$sm-min: 768px;
+$sm-max: 991px;
+
+// md displays
+$md-min: 992px;
+$md-max: 1199px;
+
+// lg displays
+$lg-min: 1200px;
+$lg-max: 9999px;
+
+// ===================================================================================
+// == html and body styles ===========================================================
+// ===================================================================================
+
+// When using rem units this helps with scaling fonts through 
+// different display sizes
+html {
+    @media (min-width: $xs-min) {
+        font-size: 52.5%;
+    }
+
+    @media (min-width: $sm-min) {
+       font-size: 57.5%;
+    }
+
+    @media (min-width: $md-min) {
+        font-size: 62.5%; // When using rem units, it is equivalente to 10px
+    }
+
+    @media (min-width: $md-min) {
+        font-size: 67.5%;
+    }
+}
+
+body {
+    background-color: rgb(240, 240, 240); 
+    font-family: 'Lato', sans-serif;
+}
+
+// ===================================================================================
+// == This keeps the footer down =====================================================
+// ===================================================================================
+
+$footer-height: 40px;
+
+* {
+    margin: 0;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.page {
+    min-height:100%;
+    position: relative;
+
+    //.page--header {
+    //}
+
+    .page--content {
+        padding-bottom: $footer-height;
+    }
+
+    .page--footer {
+        width: 100%;
+        height: $footer-height;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+// ===================================================================================
+// == Style for general tags =========================================================
+// ===================================================================================
+
+.page {
+    min-height:100%;
+    text-align: left;
+
+    h1, h1 a {
+        color: #155686;
+        font-size: 3.2rem;
+        line-height: 3.2rem;
+        margin-top: 1.0rem;
+        margin-bottom: 3.0rem;
+    }
+
+    h2, h2 a {
+        color: #777;
+        font-size: 2.2rem;
+        line-height: 2.2rem;
+        margin-top: 1.0rem;
+        margin-bottom: 1.0rem;
+    }
+
+    h3, h3 a {
+        color: #777;
+        font-size: 1.9rem;
+        line-height: 1.9rem;
+        margin-top: 1.0rem;
+        margin-bottom: 1.0rem;
+    }
+
+    h4, h4 a {
+        color: #777;
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        margin-top: 1.0rem;
+        margin-bottom: 1.0rem;
+    }
+
+    p {
+        color: #555;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        small, small a {
+            font-size: 1.4rem;
+            line-height: 1.4rem;
+        }
+    } 
+
+    li {
+        color: #555;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    } 
+
+    hr {
+        margin: 10px 0px;
+        border-top: thin solid #999;
+    }
+
+    a {
+        color: #1c72b0;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+            color: #228fdd;
+        }
+    }
+}
+
+// ===================================================================================
+// == Useful styles ==================================================================
+// ===================================================================================
+
+// Source: http://stackoverflow.com/questions/218760/how-do-you-keep-parents-of-floated-elements-from-collapsing
+.clearfix:after { 
+    content: " ";
+    display: block; 
+    height: 0; 
+    clear: both;
+}
+
+// ===================================================================================
+// == Partial stylesheets ============================================================
+// ===================================================================================
+
+@import 'header';
+@import 'menu';
+@import 'footer';

@@ -1,0 +1,32 @@
+$background: #2859aa;
+$background-active: #6e99dd;
+
+.page .page--header {
+
+    nav {
+        background-color: $background;
+        border: none;
+        border-radius: 0px;
+
+        li { 
+            margin: 0;
+
+            a {
+                color: white;
+
+                &:hover, &:focus {
+                    background-color: $background-active;
+                    color: white;        
+                }
+            }
+        }
+
+        .navbar-toggle:hover, .navbar-toggle:focus {
+            background-color: $background-active;
+        }
+
+        .icon-bar {
+            background-color: white;
+        }
+    }
+}
