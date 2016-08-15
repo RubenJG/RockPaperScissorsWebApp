@@ -1,11 +1,13 @@
-package app.model;
+package app.webservice;
+
+import app.model.Player;
 
 /**
  * Class meant to create winner object returned as json by the webservice
  * 
  * @author Rubén Jiménez Goñi
  */
-public class Winner {
+public class WinnerResponse {
 
 	/**
 	 * String array that holds the winner's name and strategy
@@ -18,7 +20,7 @@ public class Winner {
 	 * @param p
 	 *            Player that won the championship
 	 */
-	public Winner(Player p) {
+	public WinnerResponse(Player p) {
 		winner = new String[] { p.getName(), p.getStrategy() };
 	}
 

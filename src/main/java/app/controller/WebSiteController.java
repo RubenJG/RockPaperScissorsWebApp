@@ -1,8 +1,14 @@
 package app.controller;
 
+import java.util.Iterator;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import app.database.DBPlayer;
+import app.database.DBPlayerRepository;
 
 /**
  * Controller meant to handle requests made by the user when navigating the
@@ -44,6 +50,17 @@ public class WebSiteController {
 	public static final String ADMINISTRATION_VIEW = "administration";
 
 	/**
+	 * Administration template
+	 */
+	public static final String DELETE_DB_VIEW = "deletedb";
+	
+	/**
+	 * Repository of DBPlayer objects
+	 */
+	@Autowired
+	private DBPlayerRepository repository;
+
+	/**
 	 * Method that handles when the user asks for the / path
 	 * 
 	 * @param model
@@ -76,6 +93,13 @@ public class WebSiteController {
 	 */
 	@RequestMapping("/ranking")
 	public String ranking(Model model) {
+		Iterable<DBPlayer> players = repository.findAll();
+		model.addAttribute("playersList", players);
+		int c = 0;
+		for (Iterator<DBPlayer> it = players.iterator(); it.hasNext(); it.next()) {
+			++c;
+		}
+		model.addAttribute("listEmpty", c == 0);
 		return RANKING_VIEW;
 	}
 
@@ -115,4 +139,16 @@ public class WebSiteController {
 		return ADMINISTRATION_VIEW;
 	}
 
+	/**
+	 * Method that handles when the user asks for the /deletedb path
+	 * 
+	 * @param model
+	 *            Model that contains variables sent to the template
+	 * @return the template that should be rendered
+	 */
+	@RequestMapping("/deletedb")
+	public String deleteDB(Model model) {
+		repository.deleteAll();
+		return DELETE_DB_VIEW;
+	}
 }

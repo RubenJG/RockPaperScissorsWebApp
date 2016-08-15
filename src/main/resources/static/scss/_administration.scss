@@ -1,0 +1,10 @@
+.page  {
+    .deletedb {
+        color: white;
+
+        &:hover, &:focus {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}

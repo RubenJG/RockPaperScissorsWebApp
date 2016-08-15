@@ -14,7 +14,7 @@ public class ServletInitializer extends SpringBootServletInitializer {
 	/**
 	 * Method that configures the application
 	 * 
-	 * @param application ???
+	 * @param application 
 	 */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

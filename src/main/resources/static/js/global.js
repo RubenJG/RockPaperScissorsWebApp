@@ -66,7 +66,7 @@ function sendData(data) {
     $.ajax({
         url: '/api/championship/new',
         data: 'data='+data,
-        method: "POST"
+        method: 'POST'
     }).done(done).fail(fail);
 }
 
@@ -97,10 +97,41 @@ function setWinnerText(text, className) {
     $('p.winner').text(text);
 } 
 
+// ============================================================================
+// = Test methods =============================================================
+// ============================================================================
 
+function testApiChampionshipResult() {
+    $.ajax({
+        url: '/api/championship/result',
+        data: 'first=Dave&second=Armando',
+        method: 'POST'
+    }).done(function(e){
+        console.log(e)
+    }).fail(function(e) {
+        console.log('Test failed');
+    });
+}
 
-
-
+function testApiChampionshipTop() {
+    $.ajax({
+        url: '/api/championship/top',
+        data: 'count=5',
+        method: 'POST'
+    }).done(function(e){
+        console.log(e)
+    }).fail(function(e) {
+        console.log('Test failed');
+    });
+    $.ajax({
+        url: '/api/championship/top',
+        method: 'POST'
+    }).done(function(e){
+        console.log(e)
+    }).fail(function(e) {
+        console.log('Test failed');
+    });
+}
 
 
 

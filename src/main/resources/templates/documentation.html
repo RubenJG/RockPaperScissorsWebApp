@@ -14,8 +14,107 @@
 							<!-- Actual page content START -->
 								
 							<h1>Rest API documentation</h1>
-							<p>Currently under development</p>
+							<p>Here you can find the Rest API documentation for this application</p>
 							
+							<ul class="list-group">
+								<li class="list-group-item">
+									<p><strong>POST api/championship/result</strong></p>
+									<p><strong>Description</strong> Stores the first and second place of a tournament, each user is stored with their respective scores. The user names will be unique, but the same user can win 1 or more championships. Returns the operation status if successfully</p>
+									<p><strong>Resource URL</strong> /api/championship/result</p>
+									<p><strong>HTTP Method</strong> POST</p>
+									<p><strong>Response format</strong> JSON</p>
+									<p><strong>Parameters</strong></p>
+									<ul>
+										<li>
+									    	<p><strong>first (required)</strong></p>
+									    	<p>The name of the winner of the championship. Example: Dave</p>
+									 	</li>
+									  	<li>
+									    	<p><strong>second (required)</strong></p>
+									    	<p>The name of the second place of the championship.</p>
+									  	</li>
+									</ul>
+									<p><strong>Example Request</strong></p>
+									<ul>
+										<li>
+											<p><strong>POST</strong></p>
+											<p>http://rockpaperscissors.digitalcloud1.com/api/championship/result</p>
+										</li>
+										<li>
+											<p><strong>POST Data</strong></p>
+											<p>first=Dave&amp;second=Armando</p>
+										</li>
+									</ul>
+									<p><strong>Example Output</strong></p>
+<pre>
+{
+	status: "success"
+}
+</pre>
+								</li>
+								<li class="list-group-item">
+									<p><strong>GET api/championship/top</strong></p>
+									<p><strong>Description</strong> Retrieves the top players of all championships. Returns the list of player names based on the count provided.</p>
+									<p><strong>Resource URL</strong> /api/championship/top</p>
+									<p><strong>HTTP Method</strong> POST</p>
+									<p><strong>Response format</strong> JSON</p>
+									<p><strong>Parameters</strong></p>
+									<ul>
+										<li>
+									    	<p><strong>count (optional)</strong></p>
+									    	<p>Set the count of records to be retrieved. If not provided, the default value is 10. Example: 10</p>
+									 	</li>
+									</ul>
+									<p><strong>Example Request</strong></p>
+									<ul>
+										<li>
+											<p><strong>GET</strong></p>
+											<p>http://rockpaperscissors.digitalcloud1.com/api/championship/top</p>
+										</li>
+										<li>
+											<p><strong>POST Data</strong></p>
+											<p>count=10</p>
+										</li>
+									</ul>
+									<p><strong>Example Output</strong></p>
+<pre>
+{
+	players: ["Dave", "Armando", "Robert"]
+}
+</pre>
+								</li>
+								<li class="list-group-item">
+									<p><strong>POST api/championship/new</strong></p>
+									<p><strong>Description</strong> Receives the championship data and computes it to identify the winner. The first and second place are stored into a database with their respectives scores. Returns the winner of the championship</p>
+									<p><strong>Resource URL</strong> /api/championship/new</p>
+									<p><strong>HTTP Method</strong> POST</p>
+									<p><strong>Response format</strong> JSON</p>
+									<p><strong>Parameters</strong></p>
+									<ul>
+										<li>
+									    	<p><strong>data (mandatory)</strong></p>
+									    	<p>The data of the championship following the bracketed array standard. Refer to the <a href="/help">help page</a> for examples.</p>
+									 	</li>
+									</ul>
+									<p><strong>Example Request</strong></p>
+									<ul>
+										<li>
+											<p><strong>POST</strong></p>
+											<p>http://rockpaperscissors.digitalcloud1.com/api/championship/new</p>
+										</li>
+										<li>
+											<p><strong>POST Data</strong></p>
+											<p>data=[["Armando", "P"],["Dave", "S"]]</p>
+										</li>
+									</ul>
+									<p><strong>Example Output</strong></p>
+<pre>
+{
+	winner: ["Dave", "S"]
+}
+</pre>
+								</li>
+							</ul>
 							<!-- Actual page content END -->	
 						</div>
 					</div>

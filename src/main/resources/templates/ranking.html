@@ -16,8 +16,15 @@
 							<h1>Ranking</h1>
 							<p>Here you can see a list of the top players</p>
 							
-							<p>Currently under development</p>
-							
+							<ul class="list-group">
+								<li class="list-group-item" th:if="${listEmpty}">
+									No games have been played. <a href="/">Go play some first!</a>
+								</li>
+								<li class="list-group-item" th:each="player : ${playersList}">
+									<strong>Name </strong> <span th:text="${player.getName()}"></span><br/>
+									<strong>Score </strong><span th:text="${player.getScore()}"></span>
+								</li>
+							</ul>
 							<!-- Actual page content END -->	
 						</div>
 					</div>
