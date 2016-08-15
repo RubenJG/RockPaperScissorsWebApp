@@ -21,7 +21,7 @@
 									No games have been played. <a href="/">Go play some first!</a>
 								</li>
 								<li class="list-group-item" th:each="player : ${playersList}">
-									<strong>Name </strong> <span th:text="${player.getName()}"></span><br/>
+									<strong>Name </strong><span th:text="${player.getName()}"></span><br/>
 									<strong>Score </strong><span th:text="${player.getScore()}"></span>
 								</li>
 							</ul>

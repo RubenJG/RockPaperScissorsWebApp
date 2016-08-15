@@ -76,7 +76,7 @@ public class WebServiceController {
 	 */
 	@RequestMapping(value = "/top", method = RequestMethod.POST)
 	public TopPlayersResponse getTop(@RequestParam(value = "count", required = false, defaultValue = "10") int count) {
-		List<String> names = em.createQuery("select name from DBPlayer order by score", String.class).setMaxResults(10)
+		List<String> names = em.createQuery("select name from DBPlayer order by score desc", String.class).setMaxResults(10)
 				.getResultList();
 		return new TopPlayersResponse(names);
 
