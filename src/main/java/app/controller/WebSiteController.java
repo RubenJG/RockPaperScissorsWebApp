@@ -1,6 +1,8 @@
 package app.controller;
 
-import java.util.Iterator;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,12 +55,18 @@ public class WebSiteController {
 	 * Administration template
 	 */
 	public static final String DELETE_DB_VIEW = "deletedb";
-	
+
 	/**
 	 * Repository of DBPlayer objects
 	 */
 	@Autowired
 	private DBPlayerRepository repository;
+
+	/**
+	 * Allow creating queries
+	 */
+	@Autowired
+	private EntityManager em;
 
 	/**
 	 * Method that handles when the user asks for the / path
@@ -93,13 +101,10 @@ public class WebSiteController {
 	 */
 	@RequestMapping("/ranking")
 	public String ranking(Model model) {
-		Iterable<DBPlayer> players = repository.findAll();
+		List<DBPlayer> players = em.createQuery("from DBPlayer order by score desc", DBPlayer.class)
+				.getResultList();
 		model.addAttribute("playersList", players);
-		int c = 0;
-		for (Iterator<DBPlayer> it = players.iterator(); it.hasNext(); it.next()) {
-			++c;
-		}
-		model.addAttribute("listEmpty", c == 0);
+		model.addAttribute("listEmpty", players.size() == 0);
 		return RANKING_VIEW;
 	}
 
