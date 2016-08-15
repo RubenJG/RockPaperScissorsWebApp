@@ -1,22 +1,41 @@
 package app.model;
 
+/**
+ * Contains helper methods
+ * 
+ * @author Rubén Jiménez Goñi
+ *
+ */
 public class RPSHelper {
 
+	/**
+	 * Rock strategy
+	 */
 	private static final String ROCK = "R";
+
+	/**
+	 * Paper strategy
+	 */
 	private static final String PAPER = "P";
+
+	/**
+	 * Scissors strategy
+	 */
 	private static final String SCISSORS = "S";
 
 	/**
-	 * Method that takes a championship definition and evaluates it to find the winner
+	 * Method that takes a championship definition and evaluates it to find the
+	 * winner
 	 *
-	 * @param championship 
+	 * @param championship
 	 * @return
-	 * @throws Exception If the championship definition is malformed
+	 * @throws Exception
+	 *             If the championship definition is malformed
 	 */
-	public static Winner getWinner(String championship) throws Exception {
+	public static MatchInformation getWinner(String championship) throws Exception {
 		championship = championship.trim();
 		championship = championship.replaceAll("\\s+", "");
-		return new Winner(executeChampionship(championship));
+		return executeChampionship(championship);
 	}
 
 	/**
@@ -37,13 +56,13 @@ public class RPSHelper {
 	 *             If the string is malformed or if a player tries to use an
 	 *             unvalid strategy
 	 */
-	private static Player executeChampionship(String current) throws Exception {
+	private static MatchInformation executeChampionship(String current) throws Exception {
 
 		// Removing start and end characters
 		current = current.substring(1, current.length() - 1);
 
-		// Winner of the current championship branch
-		Player winner = null;
+		// Information about the current match
+		MatchInformation info = null;
 
 		// Start and end characters of the current branch
 		char startChar = current.charAt(0);
@@ -81,10 +100,10 @@ public class RPSHelper {
 			String leftBranch = current.substring(0, middle);
 			String rightBranch = current.substring(middle + 1, current.length());
 
-			Player leftPlayer = executeChampionship(leftBranch);
-			Player rightPlayer = executeChampionship(rightBranch);
+			Player leftPlayer = executeChampionship(leftBranch).getWinner();
+			Player rightPlayer = executeChampionship(rightBranch).getWinner();
 
-			winner = evaluatePlayer(leftPlayer, rightPlayer);
+			info = new MatchInformation(leftPlayer, rightPlayer);
 
 		} else if (startChar == '\"' && endChar == '\"') {
 
@@ -96,20 +115,22 @@ public class RPSHelper {
 
 			playerData[0] = playerData[0].substring(1, playerData[0].length());
 			playerData[1] = playerData[1].substring(0, playerData[1].length() - 1);
-			
+
 			// All strategies are converted to uppercase
-			
+
 			playerData[1] = playerData[1].toUpperCase();
 
 			if (!validateStrategy(playerData[1])) {
 				throw new Exception("A player is using an unvalid strategy");
 			}
-			winner = new Player(playerData[0], playerData[1]);
+
+			Player tmp = new Player(playerData[0], playerData[1]);
+			info = new MatchInformation(tmp, null);
 
 		} else {
 			throw new Exception("The championship definition is malformed");
 		}
-		return winner;
+		return info;
 	}
 
 	/**
@@ -125,36 +146,20 @@ public class RPSHelper {
 	}
 
 	/**
-	 * Method that evaluates two players and returns the player with the winner
-	 * strategy
-	 * 
-	 * @param a
-	 *            Player A
-	 * @param b
-	 *            Player B
-	 * @return the winner player or player A if it is a tie
-	 */
-	private static Player evaluatePlayer(Player a, Player b) {
-		Player winner = a;
-		if (evaluateStrategy(b.getStrategy(), a.getStrategy())) {
-			winner = b;
-		}
-		return winner;
-	}
-
-	/**
-	 * Method that evaluates the strategies of two players
+	 * Method that evaluates the strategies of two players. It evaluates
+	 * according to the rules of rock paper scissors, but it also returns true
+	 * if it is a tie
 	 * 
 	 * @param strategyA
 	 *            Strategy of player A
 	 * @param strategyB
 	 *            Strategy of player B
-	 * @return true only if strategyA defeats strategyB
+	 * @return true if strategyA defeats strategyB or if it is a tie
 	 */
-	private static boolean evaluateStrategy(String strategyA, String strategyB) {
+	public static boolean evaluateStrategy(String strategyA, String strategyB) {
 		return strategyA.equals(ROCK) && strategyB.equals(SCISSORS)
 				|| strategyA.equals(SCISSORS) && strategyB.equals(PAPER)
-				|| strategyA.equals(PAPER) && strategyB.equals(ROCK);
+				|| strategyA.equals(PAPER) && strategyB.equals(ROCK) || strategyA == strategyB;
 	}
 
 }
